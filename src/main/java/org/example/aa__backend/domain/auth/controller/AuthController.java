@@ -20,6 +20,14 @@ public class AuthController {
 
     private final AuthService authService;
 
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<TokenDTO> login(@RequestBody UserLoginDTO userLogin) {
+        TokenDTO tokenDTO = authService.authenticate(userLogin);
+        return ResponseEntity.ok(tokenDTO);
+    }
+
+    // 기존 호환용: 필요 시 제거 가능
     @PostMapping("/token")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<TokenDTO> token(@RequestBody UserLoginDTO userLogin) {
