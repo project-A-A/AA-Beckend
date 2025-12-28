@@ -8,5 +8,6 @@ import lombok.Setter;
 public class AccountDTO {
     private String email;
     private String name;
+    private String major;
     private String password;
 } 
