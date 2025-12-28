@@ -29,11 +29,6 @@ public class UserController {
     private final UserSelfDeleteService userSelfDeleteService;
     private final CredenceService credenceService;
 
-    @GetMapping("/home")
-    public String home() {
-        return "Well come! My frend!!";
-    }
-
     @GetMapping("/{userId}")
     @SecurityRequirement(name = "security-demo-api")
     public ResponseEntity<?> getMyProfile(@PathVariable UUID userId) {

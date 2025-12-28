@@ -88,10 +88,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signUp").permitAll()                // 회원가입
+                        .requestMatchers("/auth/signUp").permitAll()           // 회원가입
                         .requestMatchers("/auth/login").permitAll()            // 로그인
                         .requestMatchers("/auth/token").permitAll()            // (호환) 기존 토큰 발급 경로
                         .requestMatchers("/auth/logout").permitAll()           // 로그아웃 (클라이언트 토큰 폐기)
+                        .requestMatchers("/home/**").permitAll()               // 홈/검색 공개
                         .requestMatchers("/notice/**").permitAll()             // 공지사항 공개
                         .anyRequest().authenticated()                          // 나머지 전부 인증 필요
                 )
