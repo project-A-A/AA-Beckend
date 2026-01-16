@@ -15,5 +15,6 @@ public class AccountViewDTO {
     private UUID id;
     private String email;
     private String name;
+    private String major;
     private String role;
 } 

@@ -28,7 +28,7 @@ public class UserQueryServiceImpl implements UserQueryService {
         try {
             List<Account> accounts = accountRepository.findAll();
             List<AccountViewDTO> userList = accounts.stream()
-                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getRole()))
+                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getMajor(), account.getRole()))
                 .collect(Collectors.toList());
             
             return ResponseEntity.ok(userList);
@@ -44,7 +44,7 @@ public class UserQueryServiceImpl implements UserQueryService {
             Account account = accountRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
             
-            AccountViewDTO userInfo = new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getRole());
+            AccountViewDTO userInfo = new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getMajor(), account.getRole());
             return ResponseEntity.ok(userInfo);
         } catch (Exception e) {
             log.error("Failed to get user by id: {}", e.getMessage());

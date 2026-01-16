@@ -16,7 +16,7 @@ public class SignUpController {
 
     private final UserService userService;
 
-    @PostMapping("/signUp")
+    @PostMapping("/auth/signUp")
     public ResponseEntity<String> signUp(@RequestBody AccountDTO accountDTO) {
         String result = userService.createUser(accountDTO);
         return ResponseEntity.ok(result);

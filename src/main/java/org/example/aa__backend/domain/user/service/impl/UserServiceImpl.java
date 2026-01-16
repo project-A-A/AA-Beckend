@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
         Account account = new Account();
         account.setEmail(accountDTO.getEmail());
         account.setName(accountDTO.getName());
+        account.setMajor(accountDTO.getMajor());
         account.setPassword(passwordEncoder.encode(accountDTO.getPassword()));
         account.setRole("ROLE_USER");
 
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService {
         userValidationService.validateUsersExist(accounts);
         
         return accounts.stream()
-                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getRole()))
+                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getMajor(), account.getRole()))
                 .toList();
     }
 } 

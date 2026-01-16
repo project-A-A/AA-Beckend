@@ -27,7 +27,7 @@ public class AdminUserQueryServiceImpl implements AdminUserQueryService {
         try {
             List<Account> accounts = accountRepository.findAll();
             List<AccountViewDTO> userList = accounts.stream()
-                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getRole()))
+                .map(account -> new AccountViewDTO(account.getId(), account.getEmail(), account.getName(), account.getMajor(), account.getRole()))
                 .collect(Collectors.toList());
             
             log.info("All users retrieved by admin successfully: count={}", userList.size());
